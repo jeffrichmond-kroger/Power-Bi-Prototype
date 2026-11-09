@@ -29,10 +29,10 @@ table OrgUnits
 
 	column District
 		dataType: string
-		sortByColumn: DistrictSort
 		lineageTag: df32ec17-7485-4d31-a656-4b121c6122f2
 		summarizeBy: none
 		sourceColumn: District
+		sortByColumn: DistrictSort
 
 		annotation SummarizationSetBy = Automatic
 

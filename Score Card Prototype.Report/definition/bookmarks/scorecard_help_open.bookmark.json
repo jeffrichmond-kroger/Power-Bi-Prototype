@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "Help Open",
+  "name": "scorecard_help_open",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "help_overlay",
+      "help_backdrop",
+      "help_panel",
+      "help_close"
+    ],
+    "suppressActiveSection": true,
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.0",
+    "activeSection": "593251716bc36102b15d",
+    "sections": {
+      "593251716bc36102b15d": {
+        "visualContainers": {
+          "help_backdrop": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "help_panel": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "help_close": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "help_overlay": {
+            "isHidden": false
+          }
+        }
+      }
+    }
+  }
+}

@@ -59,10 +59,10 @@ table Calendar
 
 	column WeekLabel
 		dataType: string
-		sortByColumn: WeekSort
 		lineageTag: 49693d7d-23b6-476e-bc1b-8fcdb06d5503
 		summarizeBy: none
 		sourceColumn: WeekLabel
+		sortByColumn: WeekSort
 
 		annotation SummarizationSetBy = Automatic
 

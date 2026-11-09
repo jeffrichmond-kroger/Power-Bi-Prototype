@@ -13,19 +13,19 @@ table Metrics
 
 	column MetricGroup
 		dataType: string
-		sortByColumn: GroupSort
 		lineageTag: 2d53c340-8e1a-4171-b8ba-a062e6db7869
 		summarizeBy: none
 		sourceColumn: MetricGroup
+		sortByColumn: GroupSort
 
 		annotation SummarizationSetBy = Automatic
 
 	column MetricName
 		dataType: string
-		sortByColumn: MetricSort
 		lineageTag: f0da427b-f785-45ce-b154-fc7b9bbd52ee
 		summarizeBy: none
 		sourceColumn: MetricName
+		sortByColumn: MetricSort
 
 		annotation SummarizationSetBy = Automatic
 
