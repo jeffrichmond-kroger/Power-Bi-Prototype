@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["OrgUnits","Calendar","Metrics","Goals","Actuals"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table OrgUnits
+ref table Calendar
+ref table DateTableTemplate_6cd68bf1-96de-413d-aba1-653f0ee6736f
+ref table LocalDateTable_eabeb0bf-c2ab-4768-b729-71ad3c33015e
+ref table LocalDateTable_06d3fc03-a460-4dd3-9ae7-3dc7f3c1a26f
+ref table Metrics
+ref table Goals
+ref table Actuals
+
+ref cultureInfo en-US
+

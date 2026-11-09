@@ -1,0 +1,61 @@
+table OrgUnits
+	lineageTag: 3bb49a63-c540-47ae-8cec-be2b7542152e
+
+	column DistrictKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e315b373-a6ca-426c-9f0c-9d8371f5bf5f
+		summarizeBy: none
+		sourceColumn: DistrictKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessUnit
+		dataType: string
+		lineageTag: adf7dea9-d09e-4ce5-bb00-e702ef25c71d
+		summarizeBy: none
+		sourceColumn: BusinessUnit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division
+		dataType: string
+		lineageTag: f20395d4-a2a9-4662-853d-a55674fcd234
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column District
+		dataType: string
+		sortByColumn: DistrictSort
+		lineageTag: df32ec17-7485-4d31-a656-4b121c6122f2
+		summarizeBy: none
+		sourceColumn: District
+
+		annotation SummarizationSetBy = Automatic
+
+	column DistrictSort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fa90530d-ec19-4d69-a687-be89a7a88af7
+		summarizeBy: none
+		sourceColumn: DistrictSort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition OrgUnits = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\JR87208\OneDrive - The Kroger Co\Documents\Reportal\PowerBI_Scorecard_Prototype_Data.xlsx"), null, true),
+				    OrgUnits_Sheet = Source{[Item="OrgUnits",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(OrgUnits_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"DistrictKey", Int64.Type}, {"BusinessUnit", type text}, {"Division", type text}, {"District", type text}, {"DistrictSort", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

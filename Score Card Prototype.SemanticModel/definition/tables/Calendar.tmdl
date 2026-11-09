@@ -1,0 +1,131 @@
+table Calendar
+	lineageTag: e659e476-c8cf-4989-b2ee-beee7932b73a
+
+	column WeekKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: debcff2a-0ead-4b50-a595-d86bc13eb63a
+		summarizeBy: none
+		sourceColumn: WeekKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 58e87276-c2bc-4c15-91c7-120795b4d84b
+		summarizeBy: none
+		sourceColumn: FiscalYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalPeriod
+		dataType: int64
+		formatString: 0
+		lineageTag: 4460c35d-7537-40e9-9a18-3f9ab75f308e
+		summarizeBy: none
+		sourceColumn: FiscalPeriod
+
+		annotation SummarizationSetBy = Automatic
+
+	column PeriodLabel
+		dataType: string
+		lineageTag: ed223478-e160-4dfa-91b3-70ae7de278e1
+		summarizeBy: none
+		sourceColumn: PeriodLabel
+
+		annotation SummarizationSetBy = Automatic
+
+	column PeriodWeek
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: dd595bf9-9def-4f84-95cb-7d1a5bb86e73
+		summarizeBy: sum
+		sourceColumn: PeriodWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalWeek
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f9c10704-2d21-40a5-b12c-745eddbbc35b
+		summarizeBy: sum
+		sourceColumn: FiscalWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekLabel
+		dataType: string
+		sortByColumn: WeekSort
+		lineageTag: 49693d7d-23b6-476e-bc1b-8fcdb06d5503
+		summarizeBy: none
+		sourceColumn: WeekLabel
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekStartDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 400778a1-f22f-4f0f-8f39-08f4057d6230
+		summarizeBy: none
+		sourceColumn: WeekStartDate
+
+		variation Variation
+			isDefault
+			relationship: 2e34159b-844a-4fab-b07e-3c1bc776ba03
+			defaultHierarchy: LocalDateTable_eabeb0bf-c2ab-4768-b729-71ad3c33015e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WeekEndDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ee064de8-1c30-47ae-ae1e-65773c9fb6d7
+		summarizeBy: none
+		sourceColumn: WeekEndDate
+
+		variation Variation
+			isDefault
+			relationship: 294e3c54-be8e-4044-896c-3d1cc026c358
+			defaultHierarchy: LocalDateTable_06d3fc03-a460-4dd3-9ae7-3dc7f3c1a26f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column IsCurrentPeriod
+		dataType: string
+		lineageTag: d96ca336-e4d3-49fc-a88e-b1f901dc0234
+		summarizeBy: none
+		sourceColumn: IsCurrentPeriod
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekSort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fd27acfb-002e-4561-887b-fb43d7ebc95f
+		summarizeBy: sum
+		sourceColumn: WeekSort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendar = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\JR87208\OneDrive - The Kroger Co\Documents\Reportal\PowerBI_Scorecard_Prototype_Data.xlsx"), null, true),
+				    Calendar_Sheet = Source{[Item="Calendar",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Calendar_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"WeekKey", Int64.Type}, {"FiscalYear", Int64.Type}, {"FiscalPeriod", Int64.Type}, {"PeriodLabel", type text}, {"PeriodWeek", Int64.Type}, {"FiscalWeek", Int64.Type}, {"WeekLabel", type text}, {"WeekStartDate", type date}, {"WeekEndDate", type date}, {"IsCurrentPeriod", type text}, {"WeekSort", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

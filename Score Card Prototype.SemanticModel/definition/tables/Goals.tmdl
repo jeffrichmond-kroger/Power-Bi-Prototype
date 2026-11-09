@@ -1,0 +1,76 @@
+table Goals
+	lineageTag: 38f64b47-c8fe-447d-a224-28cbfcf0d4ed
+
+	column MetricKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: cd5516c9-bce5-421d-aa9b-a18a8ece4209
+		summarizeBy: none
+		sourceColumn: MetricKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoalValue
+		dataType: double
+		lineageTag: 456b8b48-2a38-48ba-9cee-06dec543c7c8
+		summarizeBy: sum
+		sourceColumn: GoalValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GreenThreshold
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 63e43486-be4b-4446-8ee7-9b48fdbbfa59
+		summarizeBy: sum
+		sourceColumn: GreenThreshold
+
+		annotation SummarizationSetBy = Automatic
+
+	column YellowThreshold
+		dataType: double
+		isHidden
+		lineageTag: 868cfd49-1f04-46d7-a74c-a3eccb5c518b
+		summarizeBy: sum
+		sourceColumn: YellowThreshold
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OrangeThreshold
+		dataType: double
+		isHidden
+		lineageTag: 5337e882-7718-40c5-a888-c6800998e5a9
+		summarizeBy: sum
+		sourceColumn: OrangeThreshold
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GoalNote
+		dataType: string
+		lineageTag: 6d3c34f7-9e04-4f5f-b7ab-87ee006cdcc5
+		summarizeBy: none
+		sourceColumn: GoalNote
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Goals = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\JR87208\OneDrive - The Kroger Co\Documents\Reportal\PowerBI_Scorecard_Prototype_Data.xlsx"), null, true),
+				    Goals_Sheet = Source{[Item="Goals",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Goals_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"MetricKey", Int64.Type}, {"GoalValue", type number}, {"GreenThreshold", Int64.Type}, {"YellowThreshold", type number}, {"OrangeThreshold", type number}, {"GoalNote", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

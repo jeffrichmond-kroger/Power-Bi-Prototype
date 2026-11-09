@@ -1,0 +1,338 @@
+table Actuals
+	lineageTag: a268be16-1c53-449b-94fb-74f8e8071693
+
+	column DistrictKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1166a8e1-7dd5-4b97-b754-a44970fbcce4
+		summarizeBy: none
+		sourceColumn: DistrictKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetricKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9b2acdc2-d676-4bd7-b03d-0f823ee3463d
+		summarizeBy: none
+		sourceColumn: MetricKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f745f0d3-b5b4-4588-b876-2555c7c8dfe1
+		summarizeBy: none
+		sourceColumn: WeekKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActualValue
+		dataType: double
+		lineageTag: f6e323ae-a48e-435c-9cd0-7ac9e99c6f3d
+		summarizeBy: sum
+		sourceColumn: ActualValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LoadDateTime
+		dataType: string
+		isHidden
+		lineageTag: ddbb19a9-ac81-4f4f-8a86-639a7a330a92
+		summarizeBy: none
+		sourceColumn: LoadDateTime
+
+		annotation SummarizationSetBy = Automatic
+
+	measure 'Actual Value' =
+		VAR MetricFormat = SELECTEDVALUE ( Metrics[NumberFormat], "0" )
+		VAR AverageObservation = CONTAINSSTRING ( MetricFormat, "%" ) || CONTAINSSTRING ( MetricFormat, "." )
+		RETURN
+			IF (
+				HASONEVALUE ( Metrics[MetricKey] ),
+				IF ( AverageObservation, AVERAGE ( Actuals[ActualValue] ), SUM ( Actuals[ActualValue] ) )
+			)
+		displayFolder: "Base Measures"
+		formatString: #,0.00;(#,0.00);-
+
+	measure 'Goal Value' =
+		IF ( HASONEVALUE ( Metrics[MetricKey] ), MAX ( Goals[GoalValue] ) )
+		displayFolder: "Base Measures"
+		formatString: #,0.00;(#,0.00);-
+
+	measure 'Selected Fiscal Year' =
+		SELECTEDVALUE ( Calendar[FiscalYear], 2026 )
+		displayFolder: "Report Information"
+		formatString: 0
+
+	measure 'Selected Fiscal Period' =
+		SELECTEDVALUE ( Calendar[FiscalPeriod], 9 )
+		displayFolder: "Report Information"
+		formatString: 0
+
+	measure 'Latest Week Number' =
+		VAR SelectedYear = [Selected Fiscal Year]
+		VAR SelectedPeriod = [Selected Fiscal Period]
+		RETURN
+			CALCULATE (
+				MAX ( Calendar[FiscalWeek] ),
+				KEEPFILTERS ( Calendar[FiscalYear] = SelectedYear ),
+				KEEPFILTERS ( Calendar[FiscalPeriod] = SelectedPeriod )
+			)
+		displayFolder: "Time Intelligence"
+		formatString: 0
+
+	measure 'Current Week Actual' =
+		VAR SelectedYear = [Selected Fiscal Year]
+		VAR SelectedPeriod = [Selected Fiscal Period]
+		VAR WeekNumber = [Latest Week Number]
+		RETURN
+			CALCULATE (
+				[Actual Value],
+				REMOVEFILTERS ( Calendar[FiscalWeek], Calendar[WeekKey], Calendar[WeekLabel], Calendar[WeekSort], Calendar[PeriodWeek] ),
+				Calendar[FiscalYear] = SelectedYear,
+				Calendar[FiscalPeriod] = SelectedPeriod,
+				Calendar[FiscalWeek] = WeekNumber
+			)
+		displayFolder: "Time Intelligence"
+		formatString: #,0.00;(#,0.00);-
+
+	measure 'Previous Week Actual' =
+		VAR SelectedYear = [Selected Fiscal Year]
+		VAR PreviousWeek = [Latest Week Number] - 1
+		RETURN
+			IF (
+				PreviousWeek < 1,
+				BLANK (),
+				CALCULATE (
+					[Actual Value],
+					REMOVEFILTERS ( Calendar ),
+					Calendar[FiscalYear] = SelectedYear,
+					Calendar[FiscalWeek] = PreviousWeek
+				)
+			)
+		displayFolder: "Time Intelligence"
+		formatString: #,0.00;(#,0.00);-
+
+	measure 'Week-over-Week Change' =
+		[Current Week Actual] - [Previous Week Actual]
+		displayFolder: "Time Intelligence"
+		formatString: #,0.00;(#,0.00);-
+
+	measure 'Week-over-Week Percent Change' =
+		DIVIDE ( [Week-over-Week Change], ABS ( [Previous Week Actual] ) )
+		displayFolder: "Time Intelligence"
+		formatString: 0.0%;(0.0%);-
+
+	measure 'Week-over-Week Direction' =
+		VAR ChangeValue = [Week-over-Week Change]
+		RETURN
+			SWITCH ( TRUE (), ISBLANK ( ChangeValue ), BLANK (), ChangeValue > 0, "▲", ChangeValue < 0, "▼", "●" )
+		displayFolder: "Formatting"
+
+	measure 'YTD Actual' =
+		VAR SelectedYear = [Selected Fiscal Year]
+		VAR LastWeek = [Latest Week Number]
+		VAR MetricFormat = SELECTEDVALUE ( Metrics[NumberFormat], "0" )
+		VAR AverageWeeklyValues = CONTAINSSTRING ( MetricFormat, "%" ) || CONTAINSSTRING ( MetricFormat, "." )
+		VAR YTDWeeks = FILTER ( ALL ( Calendar ), Calendar[FiscalYear] = SelectedYear && Calendar[FiscalWeek] <= LastWeek )
+		RETURN
+			IF (
+				ISBLANK ( LastWeek ),
+				BLANK (),
+				IF (
+					AverageWeeklyValues,
+					AVERAGEX ( YTDWeeks, CALCULATE ( [Actual Value] ) ),
+					CALCULATE ( [Actual Value], YTDWeeks )
+				)
+			)
+		displayFolder: "Time Intelligence"
+		formatString: #,0.00;(#,0.00);-
+
+	measure 'Performance to Goal Ratio' =
+		VAR IsHigherBetter = SELECTEDVALUE ( Metrics[HigherIsBetter] ) = "Yes"
+		VAR Actual = [Current Week Actual]
+		VAR Goal = [Goal Value]
+		RETURN
+			IF ( IsHigherBetter, DIVIDE ( Actual, Goal ), DIVIDE ( Goal, Actual ) )
+		displayFolder: "KPI"
+		formatString: 0.0%;(0.0%);-
+
+	measure 'Performance Status' =
+		VAR Ratio = [Performance to Goal Ratio]
+		VAR GreenLevel = COALESCE ( MAX ( Goals[GreenThreshold] ), 1 )
+		VAR YellowLevel = COALESCE ( MAX ( Goals[YellowThreshold] ), 0.95 )
+		VAR OrangeLevel = COALESCE ( MAX ( Goals[OrangeThreshold] ), 0.9 )
+		RETURN
+			IF (
+				ISBLANK ( Ratio ),
+				BLANK (),
+				SWITCH ( TRUE (), Ratio >= GreenLevel, "Green", Ratio >= YellowLevel, "Yellow", Ratio >= OrangeLevel, "Orange", "Red" )
+			)
+		displayFolder: "KPI"
+
+	measure 'Performance Color' =
+		SWITCH (
+			[Performance Status],
+			"Green", "#2E7D32",
+			"Yellow", "#F9B900",
+			"Orange", "#D95F02",
+			"Red", "#C62828",
+			"#666666"
+		)
+		displayFolder: "Formatting"
+
+	measure 'Week-over-Week Color' =
+		VAR ChangeValue = [Week-over-Week Change]
+		VAR IsHigherBetter = SELECTEDVALUE ( Metrics[HigherIsBetter] ) = "Yes"
+		RETURN
+			IF (
+				ISBLANK ( ChangeValue ) || ChangeValue = 0,
+				"#666666",
+				IF ( ( ChangeValue > 0 ) = IsHigherBetter, "#2E7D32", "#C62828" )
+			)
+		displayFolder: "Formatting"
+
+	measure 'Current Week Display' =
+		VAR MetricFormat = SELECTEDVALUE ( Metrics[NumberFormat], "0.0" )
+		VAR Value = [Current Week Actual]
+		RETURN IF ( ISBLANK ( Value ), BLANK (), FORMAT ( Value, MetricFormat ) )
+		displayFolder: "KPI"
+
+	measure 'KPI Goal Text' =
+		VAR MetricFormat = SELECTEDVALUE ( Metrics[NumberFormat], "0.0" )
+		VAR Goal = [Goal Value]
+		RETURN IF ( ISBLANK ( Goal ), BLANK (), "Goal " & FORMAT ( Goal, MetricFormat ) )
+		displayFolder: "KPI"
+
+	measure 'KPI Comparison Text' =
+		VAR CurrentValue = [Current Week Actual]
+		VAR ChangePercent = [Week-over-Week Percent Change]
+		VAR Direction = [Week-over-Week Direction]
+		VAR ChangeText = IF ( ISBLANK ( ChangePercent ), "", " " & IF ( [Week-over-Week Change] > 0, "+", "-" ) & FORMAT ( ABS ( ChangePercent ), "0.0%" ) )
+		RETURN
+			IF (
+				ISBLANK ( CurrentValue ),
+				BLANK (),
+				"WK " & FORMAT ( [Latest Week Number], "0" ) & ": " & [Current Week Display] & "  " & COALESCE ( Direction, "●" ) & ChangeText & " vs last wk"
+			)
+		displayFolder: "KPI"
+
+	measure 'KPI Detail Text' =
+		[KPI Goal Text] & "  |  " & [KPI Comparison Text]
+		displayFolder: "KPI"
+
+	measure 'KPI Card Text' =
+		[Current Week Display] & UNICHAR ( 10 ) & [KPI Goal Text] & UNICHAR ( 10 ) & [KPI Comparison Text]
+		displayFolder: "KPI"
+
+	measure 'Report Title' = "Operational Scorecard"
+		displayFolder: "Report Information"
+
+	measure 'Filters Heading' = "Filters"
+		displayFolder: "Report Information"
+
+	measure 'Help Button Label' = "How to read this"
+		displayFolder: "Report Information"
+
+	measure 'Filter Panel Background' = ""
+		displayFolder: "Report Information"
+
+	measure 'Data As Of Text' =
+		VAR ParsedLoad =
+			MAXX (
+				ALL ( Actuals ),
+				VAR RawValue = Actuals[LoadDateTime]
+				VAR FirstSpace = SEARCH ( " ", RawValue, 1, 0 )
+				VAR DatePart = IF ( FirstSpace > 0, LEFT ( RawValue, FirstSpace - 1 ) )
+				VAR TimePart = IF ( FirstSpace > 0, TRIM ( SUBSTITUTE ( MID ( RawValue, FirstSpace + 1, LEN ( RawValue ) ), " ET", "" ) ) )
+				RETURN IFERROR ( DATEVALUE ( DatePart ) + TIMEVALUE ( TimePart ), BLANK () )
+			)
+		RETURN IF ( ISBLANK ( ParsedLoad ), "Data as of unavailable", "Data as of " & FORMAT ( ParsedLoad, "m/d/yyyy h:mm AM/PM" ) & " ET" )
+		displayFolder: "Report Information"
+
+	measure 'Reporting Period Text' =
+		VAR SelectedYear = [Selected Fiscal Year]
+		VAR SelectedPeriod = [Selected Fiscal Period]
+		VAR StartDate = CALCULATE ( MIN ( Calendar[WeekStartDate] ), KEEPFILTERS ( Calendar[FiscalYear] = SelectedYear ), KEEPFILTERS ( Calendar[FiscalPeriod] = SelectedPeriod ) )
+		VAR EndDate = CALCULATE ( MAX ( Calendar[WeekEndDate] ), KEEPFILTERS ( Calendar[FiscalYear] = SelectedYear ), KEEPFILTERS ( Calendar[FiscalPeriod] = SelectedPeriod ) )
+		RETURN IF ( ISBLANK ( StartDate ), BLANK (), "Refreshes daily and covers through " & FORMAT ( StartDate, "mm/dd/yyyy" ) & " to " & FORMAT ( EndDate, "mm/dd/yyyy" ) )
+		displayFolder: "Report Information"
+
+	measure 'Period Week 1 Actual' =
+		VAR SelectedYear = [Selected Fiscal Year]
+		VAR SelectedPeriod = [Selected Fiscal Period]
+		RETURN CALCULATE ( [Actual Value], KEEPFILTERS ( Calendar[FiscalYear] = SelectedYear ), KEEPFILTERS ( Calendar[FiscalPeriod] = SelectedPeriod ), Calendar[PeriodWeek] = 1 )
+		displayFolder: "Time Intelligence"
+		formatString: #,0.00;(#,0.00);-
+
+	measure 'Period Week 2 Actual' =
+		VAR SelectedYear = [Selected Fiscal Year]
+		VAR SelectedPeriod = [Selected Fiscal Period]
+		RETURN CALCULATE ( [Actual Value], KEEPFILTERS ( Calendar[FiscalYear] = SelectedYear ), KEEPFILTERS ( Calendar[FiscalPeriod] = SelectedPeriod ), Calendar[PeriodWeek] = 2 )
+		displayFolder: "Time Intelligence"
+		formatString: #,0.00;(#,0.00);-
+
+	measure 'Period Week 3 Actual' =
+		VAR SelectedYear = [Selected Fiscal Year]
+		VAR SelectedPeriod = [Selected Fiscal Period]
+		RETURN CALCULATE ( [Actual Value], KEEPFILTERS ( Calendar[FiscalYear] = SelectedYear ), KEEPFILTERS ( Calendar[FiscalPeriod] = SelectedPeriod ), Calendar[PeriodWeek] = 3 )
+		displayFolder: "Time Intelligence"
+		formatString: #,0.00;(#,0.00);-
+
+	measure 'Period Week 4 Actual' =
+		VAR SelectedYear = [Selected Fiscal Year]
+		VAR SelectedPeriod = [Selected Fiscal Period]
+		RETURN CALCULATE ( [Actual Value], KEEPFILTERS ( Calendar[FiscalYear] = SelectedYear ), KEEPFILTERS ( Calendar[FiscalPeriod] = SelectedPeriod ), Calendar[PeriodWeek] = 4 )
+		displayFolder: "Time Intelligence"
+		formatString: #,0.00;(#,0.00);-
+
+	measure 'YTD Display' =
+		VAR Value = [YTD Actual]
+		RETURN IF ( ISBLANK ( Value ), BLANK (), FORMAT ( Value, SELECTEDVALUE ( Metrics[NumberFormat], "0.0" ) ) )
+		displayFolder: "Formatting"
+
+	measure 'Goal Display' =
+		VAR Value = [Goal Value]
+		RETURN IF ( ISBLANK ( Value ), BLANK (), FORMAT ( Value, SELECTEDVALUE ( Metrics[NumberFormat], "0.0" ) ) )
+		displayFolder: "Formatting"
+
+	measure 'Period Week 1 Display' =
+		VAR Value = [Period Week 1 Actual]
+		RETURN IF ( ISBLANK ( Value ), BLANK (), FORMAT ( Value, SELECTEDVALUE ( Metrics[NumberFormat], "0.0" ) ) )
+		displayFolder: "Formatting"
+
+	measure 'Period Week 2 Display' =
+		VAR Value = [Period Week 2 Actual]
+		RETURN IF ( ISBLANK ( Value ), BLANK (), FORMAT ( Value, SELECTEDVALUE ( Metrics[NumberFormat], "0.0" ) ) )
+		displayFolder: "Formatting"
+
+	measure 'Period Week 3 Display' =
+		VAR Value = [Period Week 3 Actual]
+		RETURN IF ( ISBLANK ( Value ), BLANK (), FORMAT ( Value, SELECTEDVALUE ( Metrics[NumberFormat], "0.0" ) ) )
+		displayFolder: "Formatting"
+
+	measure 'Period Week 4 Display' =
+		VAR Value = [Period Week 4 Actual]
+		RETURN IF ( ISBLANK ( Value ), BLANK (), FORMAT ( Value, SELECTEDVALUE ( Metrics[NumberFormat], "0.0" ) ) )
+		displayFolder: "Formatting"
+
+	partition Actuals = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\JR87208\OneDrive - The Kroger Co\Documents\Reportal\PowerBI_Scorecard_Prototype_Data.xlsx"), null, true),
+				    Actuals_Sheet = Source{[Item="Actuals",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Actuals_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"DistrictKey", Int64.Type}, {"MetricKey", Int64.Type}, {"WeekKey", Int64.Type}, {"ActualValue", type number}, {"LoadDateTime", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

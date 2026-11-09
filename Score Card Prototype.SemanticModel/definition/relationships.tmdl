@@ -1,0 +1,28 @@
+relationship 2e34159b-844a-4fab-b07e-3c1bc776ba03
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.WeekStartDate
+	toColumn: LocalDateTable_eabeb0bf-c2ab-4768-b729-71ad3c33015e.Date
+
+relationship 294e3c54-be8e-4044-896c-3d1cc026c358
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.WeekEndDate
+	toColumn: LocalDateTable_06d3fc03-a460-4dd3-9ae7-3dc7f3c1a26f.Date
+
+relationship AutoDetected_5a903583-b91a-4245-bbf9-8c3133e4fd2b
+	fromColumn: Actuals.DistrictKey
+	toColumn: OrgUnits.DistrictKey
+
+relationship AutoDetected_269b5b61-82ed-4d02-bfe6-d9536e7943a1
+	fromColumn: Actuals.WeekKey
+	toColumn: Calendar.WeekKey
+
+relationship AutoDetected_2f04f571-0e36-4c7e-9d06-23de3668def1
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Goals.MetricKey
+	toColumn: Metrics.MetricKey
+
+relationship AutoDetected_316712a1-2260-4466-8fec-3b277a497fb1
+	fromColumn: Actuals.MetricKey
+	toColumn: Metrics.MetricKey
+

@@ -1,0 +1,99 @@
+table Metrics
+	lineageTag: 7ea6f149-2976-4b6d-8791-8ce734c38805
+
+	column MetricKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c614e710-e9d8-466f-b828-8e684d1f6fa3
+		summarizeBy: none
+		sourceColumn: MetricKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetricGroup
+		dataType: string
+		sortByColumn: GroupSort
+		lineageTag: 2d53c340-8e1a-4171-b8ba-a062e6db7869
+		summarizeBy: none
+		sourceColumn: MetricGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetricName
+		dataType: string
+		sortByColumn: MetricSort
+		lineageTag: f0da427b-f785-45ce-b154-fc7b9bbd52ee
+		summarizeBy: none
+		sourceColumn: MetricName
+
+		annotation SummarizationSetBy = Automatic
+
+	column GroupSort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0388bba0-dd58-4bf9-9beb-35b4117db53d
+		summarizeBy: none
+		sourceColumn: GroupSort
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetricSort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 859d9002-1559-4264-9624-703b5c7d7e43
+		summarizeBy: none
+		sourceColumn: MetricSort
+
+		annotation SummarizationSetBy = Automatic
+
+	column HigherIsBetter
+		dataType: string
+		lineageTag: 06c51d34-f6f1-422e-bb17-ebf7a564027e
+		summarizeBy: none
+		sourceColumn: HigherIsBetter
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsKPICard
+		dataType: string
+		isHidden
+		lineageTag: ce8c385f-ce5a-4a1e-849f-c1e203e7d2af
+		summarizeBy: none
+		sourceColumn: IsKPICard
+
+		annotation SummarizationSetBy = Automatic
+
+	column KPICardSort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e75542c8-f92a-4b85-801f-0f137b577470
+		summarizeBy: none
+		sourceColumn: KPICardSort
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumberFormat
+		dataType: string
+		lineageTag: e55397e4-76ae-457b-9a5f-20956ca31df4
+		summarizeBy: none
+		sourceColumn: NumberFormat
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Metrics = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\JR87208\OneDrive - The Kroger Co\Documents\Reportal\PowerBI_Scorecard_Prototype_Data.xlsx"), null, true),
+				    Metrics_Sheet = Source{[Item="Metrics",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Metrics_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"MetricKey", Int64.Type}, {"MetricGroup", type text}, {"MetricName", type text}, {"GroupSort", Int64.Type}, {"MetricSort", Int64.Type}, {"HigherIsBetter", type text}, {"IsKPICard", type text}, {"KPICardSort", Int64.Type}, {"NumberFormat", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

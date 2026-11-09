@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Score Card Prototype"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f56c3012-10b0-4f84-ad14-ae1a7faefb4a"
+  }
+}
