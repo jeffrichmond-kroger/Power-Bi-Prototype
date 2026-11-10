@@ -308,6 +308,7 @@ table Actuals
 			RETURN
 				IF ( NOT ISBLANK ( CurrentResult ), "WK " & FORMAT ( [Latest Week Number], "0" ) & ": " & [Current Week Display] )
 		displayFolder: KPI
+		lineageTag: f72b5aee-6595-42ec-8e33-5ff6dbc01bda
 
 	measure 'KPI Change Text' =
 			VAR ChangePercent = [Week-over-Week Percent Change]
@@ -319,6 +320,7 @@ table Actuals
 					[Week-over-Week Direction] & " " & ChangeSign & FORMAT ( ABS ( ChangePercent ), "0.0%" ) & " vs last wk"
 				)
 		displayFolder: KPI
+		lineageTag: 86a98193-7b19-4be1-8faa-046acb94c01a
 
 	measure 'Result Performance Color' =
 			VAR MetricActual = [Actual Value]
@@ -342,6 +344,7 @@ table Actuals
 					"#C62828"
 				)
 		displayFolder: Formatting
+		lineageTag: e7c1bc7a-b43b-477b-b5bb-c307bff154a1
 
 	measure 'YTD Performance Color' =
 			VAR MetricActual = [YTD Actual]
@@ -365,30 +368,35 @@ table Actuals
 					"#C62828"
 				)
 		displayFolder: Formatting
+		lineageTag: f4ef614e-1929-4051-9a20-6efab0df4231
 
 	measure 'Period Week 1 Color' =
 			VAR SelectedYear = [Selected Fiscal Year]
 			VAR SelectedPeriod = [Selected Fiscal Period]
 			RETURN CALCULATE ( [Result Performance Color], KEEPFILTERS ( Calendar[FiscalYear] = SelectedYear ), KEEPFILTERS ( Calendar[FiscalPeriod] = SelectedPeriod ), Calendar[PeriodWeek] = 1 )
 		displayFolder: Formatting
+		lineageTag: 604e3ecf-96ed-4f68-95d2-424fe54d391d
 
 	measure 'Period Week 2 Color' =
 			VAR SelectedYear = [Selected Fiscal Year]
 			VAR SelectedPeriod = [Selected Fiscal Period]
 			RETURN CALCULATE ( [Result Performance Color], KEEPFILTERS ( Calendar[FiscalYear] = SelectedYear ), KEEPFILTERS ( Calendar[FiscalPeriod] = SelectedPeriod ), Calendar[PeriodWeek] = 2 )
 		displayFolder: Formatting
+		lineageTag: 194df6e1-aa91-4ec2-beef-05ad4d421e06
 
 	measure 'Period Week 3 Color' =
 			VAR SelectedYear = [Selected Fiscal Year]
 			VAR SelectedPeriod = [Selected Fiscal Period]
 			RETURN CALCULATE ( [Result Performance Color], KEEPFILTERS ( Calendar[FiscalYear] = SelectedYear ), KEEPFILTERS ( Calendar[FiscalPeriod] = SelectedPeriod ), Calendar[PeriodWeek] = 3 )
 		displayFolder: Formatting
+		lineageTag: 4db97f28-2e68-4188-9f32-21ea2230c290
 
 	measure 'Period Week 4 Color' =
 			VAR SelectedYear = [Selected Fiscal Year]
 			VAR SelectedPeriod = [Selected Fiscal Period]
 			RETURN CALCULATE ( [Result Performance Color], KEEPFILTERS ( Calendar[FiscalYear] = SelectedYear ), KEEPFILTERS ( Calendar[FiscalPeriod] = SelectedPeriod ), Calendar[PeriodWeek] = 4 )
 		displayFolder: Formatting
+		lineageTag: 85cd9950-c2e8-48bf-ab85-90a7d2c2d606
 
 	measure 'Matrix Row Background' =
 			IF (
@@ -397,6 +405,7 @@ table Actuals
 				IF ( ISINSCOPE ( Metrics[MetricGroup] ), "#E7E7E7", "#FFFFFF" )
 			)
 		displayFolder: Formatting
+		lineageTag: 61e9a823-245c-47ea-8dac-27140ad9a02f
 
 	column DistrictKey
 		dataType: int64

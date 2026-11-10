@@ -1,277 +1,277 @@
 {
-    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-    "name":  "district_slicer",
-    "position":  {
-                     "x":  18,
-                     "y":  318,
-                     "z":  4000,
-                     "height":  108,
-                     "width":  210,
-                     "tabOrder":  4000
-                 },
-    "visual":  {
-                   "visualType":  "slicer",
-                   "query":  {
-                                 "queryState":  {
-                                                    "Values":  {
-                                                                   "projections":  [
-                                                                                       {
-                                                                                           "field":  {
-                                                                                                         "Column":  {
-                                                                                                                        "Expression":  {
-                                                                                                                                           "SourceRef":  {
-                                                                                                                                                             "Entity":  "OrgUnits"
-                                                                                                                                                         }
-                                                                                                                                       },
-                                                                                                                        "Property":  "District"
-                                                                                                                    }
-                                                                                                     },
-                                                                                           "queryRef":  "OrgUnits.District",
-                                                                                           "nativeQueryRef":  "District",
-                                                                                           "active":  true,
-                                                                                           "displayName":  "District"
-                                                                                       }
-                                                                                   ]
-                                                               }
-                                                }
-                             },
-                   "objects":  {
-                                   "data":  [
-                                                {
-                                                    "properties":  {
-                                                                       "mode":  {
-                                                                                    "expr":  {
-                                                                                                 "Literal":  {
-                                                                                                                 "Value":  "\u0027Dropdown\u0027"
-                                                                                                             }
-                                                                                             }
-                                                                                }
-                                                                   }
-                                                }
-                                            ],
-                                   "selection":  [
-                                                     {
-                                                         "properties":  {
-                                                                            "selectAllCheckboxEnabled":  {
-                                                                                                             "expr":  {
-                                                                                                                          "Literal":  {
-                                                                                                                                          "Value":  "false"
-                                                                                                                                      }
-                                                                                                                      }
-                                                                                                         },
-                                                                            "singleSelect":  {
-                                                                                                 "expr":  {
-                                                                                                              "Literal":  {
-                                                                                                                              "Value":  "true"
-                                                                                                                          }
-                                                                                                          }
-                                                                                             }
-                                                                        }
-                                                     }
-                                                 ],
-                                   "header":  [
-                                                  {
-                                                      "properties":  {
-                                                                         "show":  {
-                                                                                      "expr":  {
-                                                                                                   "Literal":  {
-                                                                                                                   "Value":  "false"
-                                                                                                               }
-                                                                                               }
-                                                                                  }
-                                                                     }
-                                                  }
-                                              ],
-                                   "items":  [
-                                                 {
-                                                     "properties":  {
-                                                                        "fontFamily":  {
-                                                                                           "expr":  {
-                                                                                                        "Literal":  {
-                                                                                                                        "Value":  "\u0027Segoe UI\u0027"
-                                                                                                                    }
-                                                                                                    }
-                                                                                       },
-                                                                        "textSize":  {
-                                                                                         "expr":  {
-                                                                                                      "Literal":  {
-                                                                                                                      "Value":  "14D"
-                                                                                                                  }
-                                                                                                  }
-                                                                                     },
-                                                                        "fontColor":  {
-                                                                                          "solid":  {
-                                                                                                        "color":  {
-                                                                                                                      "expr":  {
-                                                                                                                                   "Literal":  {
-                                                                                                                                                   "Value":  "\u0027#111111\u0027"
-                                                                                                                                               }
-                                                                                                                               }
-                                                                                                                  }
-                                                                                                    }
-                                                                                      },
-                                                                        "background":  {
-                                                                                           "solid":  {
-                                                                                                         "color":  {
-                                                                                                                       "expr":  {
-                                                                                                                                    "Literal":  {
-                                                                                                                                                    "Value":  "\u0027#FFFFFF\u0027"
-                                                                                                                                                }
-                                                                                                                                }
-                                                                                                                   }
-                                                                                                     }
-                                                                                       }
-                                                                    }
-                                                 }
-                                             ]
-                               },
-                   "visualContainerObjects":  {
-                                                  "title":  [
-                                                                {
-                                                                    "properties":  {
-                                                                                       "show":  {
-                                                                                                    "expr":  {
-                                                                                                                 "Literal":  {
-                                                                                                                                 "Value":  "true"
-                                                                                                                             }
-                                                                                                             }
-                                                                                                },
-                                                                                       "text":  {
-                                                                                                    "expr":  {
-                                                                                                                 "Literal":  {
-                                                                                                                                 "Value":  "\u0027District\u0027"
-                                                                                                                             }
-                                                                                                             }
-                                                                                                },
-                                                                                       "fontSize":  {
-                                                                                                        "expr":  {
-                                                                                                                     "Literal":  {
-                                                                                                                                     "Value":  "14D"
-                                                                                                                                 }
-                                                                                                                 }
-                                                                                                    },
-                                                                                       "fontColor":  {
-                                                                                                         "solid":  {
-                                                                                                                       "color":  {
-                                                                                                                                     "expr":  {
-                                                                                                                                                  "Literal":  {
-                                                                                                                                                                  "Value":  "\u0027#111111\u0027"
-                                                                                                                                                              }
-                                                                                                                                              }
-                                                                                                                                 }
-                                                                                                                   }
-                                                                                                     },
-                                                                                       "alignment":  {
-                                                                                                         "expr":  {
-                                                                                                                      "Literal":  {
-                                                                                                                                      "Value":  "\u0027left\u0027"
-                                                                                                                                  }
-                                                                                                                  }
-                                                                                                     },
-                                                                                       "fontFamily":  {
-                                                                                                          "expr":  {
-                                                                                                                       "Literal":  {
-                                                                                                                                       "Value":  "\u0027Segoe UI\u0027"
-                                                                                                                                   }
-                                                                                                                   }
-                                                                                                      },
-                                                                                       "bold":  {
-                                                                                                    "expr":  {
-                                                                                                                 "Literal":  {
-                                                                                                                                 "Value":  "false"
-                                                                                                                             }
-                                                                                                             }
-                                                                                                }
-                                                                                   }
-                                                                }
-                                                            ],
-                                                  "visualHeader":  [
-                                                                       {
-                                                                           "properties":  {
-                                                                                              "show":  {
-                                                                                                           "expr":  {
-                                                                                                                        "Literal":  {
-                                                                                                                                        "Value":  "false"
-                                                                                                                                    }
-                                                                                                                    }
-                                                                                                       }
-                                                                                          }
-                                                                       }
-                                                                   ],
-                                                  "border":  [
-                                                                 {
-                                                                     "properties":  {
-                                                                                        "show":  {
-                                                                                                     "expr":  {
-                                                                                                                  "Literal":  {
-                                                                                                                                  "Value":  "false"
-                                                                                                                              }
-                                                                                                              }
-                                                                                                 }
-                                                                                    }
-                                                                 }
-                                                             ],
-                                                  "background":  [
-                                                                     {
-                                                                         "properties":  {
-                                                                                            "show":  {
-                                                                                                         "expr":  {
-                                                                                                                      "Literal":  {
-                                                                                                                                      "Value":  "false"
-                                                                                                                                  }
-                                                                                                                  }
-                                                                                                     }
-                                                                                        }
-                                                                     }
-                                                                 ],
-                                                  "dropShadow":  [
-                                                                     {
-                                                                         "properties":  {
-                                                                                            "show":  {
-                                                                                                         "expr":  {
-                                                                                                                      "Literal":  {
-                                                                                                                                      "Value":  "false"
-                                                                                                                                  }
-                                                                                                                  }
-                                                                                                     }
-                                                                                        }
-                                                                     }
-                                                                 ],
-                                                  "padding":  [
-                                                                  {
-                                                                      "properties":  {
-                                                                                         "left":  {
-                                                                                                      "expr":  {
-                                                                                                                   "Literal":  {
-                                                                                                                                   "Value":  "0D"
-                                                                                                                               }
-                                                                                                               }
-                                                                                                  },
-                                                                                         "right":  {
-                                                                                                       "expr":  {
-                                                                                                                    "Literal":  {
-                                                                                                                                    "Value":  "0D"
-                                                                                                                                }
-                                                                                                                }
-                                                                                                   },
-                                                                                         "bottom":  {
-                                                                                                        "expr":  {
-                                                                                                                     "Literal":  {
-                                                                                                                                     "Value":  "0D"
-                                                                                                                                 }
-                                                                                                                 }
-                                                                                                    },
-                                                                                         "top":  {
-                                                                                                     "expr":  {
-                                                                                                                  "Literal":  {
-                                                                                                                                  "Value":  "0D"
-                                                                                                                              }
-                                                                                                              }
-                                                                                                 }
-                                                                                     }
-                                                                  }
-                                                              ]
-                                              },
-                   "drillFilterOtherVisuals":  true
-               }
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "district_slicer",
+  "position": {
+    "x": 18,
+    "y": 318,
+    "z": 4000,
+    "height": 108,
+    "width": 210,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgUnits"
+                    }
+                  },
+                  "Property": "District"
+                }
+              },
+              "queryRef": "OrgUnits.District",
+              "nativeQueryRef": "District",
+              "active": true,
+              "displayName": "District"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "selection": [
+        {
+          "properties": {
+            "selectAllCheckboxEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "singleSelect": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "header": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "items": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI'"
+                }
+              }
+            },
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#111111'"
+                    }
+                  }
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'District'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#111111'"
+                    }
+                  }
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'left'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
 }

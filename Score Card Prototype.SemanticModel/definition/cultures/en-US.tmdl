@@ -99,7 +99,7 @@ cultureInfo en-US
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Metric Group": {
+			          "Measure": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -120,7 +120,7 @@ cultureInfo en-US
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Metric": {
+			          "Measure": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",

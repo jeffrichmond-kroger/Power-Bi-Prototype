@@ -1,1035 +1,1149 @@
 {
-    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-    "name":  "scorecard_matrix",
-    "position":  {
-                     "x":  275,
-                     "y":  310,
-                     "z":  14000,
-                     "height":  520,
-                     "width":  1605,
-                     "tabOrder":  14000
-                 },
-    "visual":  {
-                   "visualType":  "pivotTable",
-                   "query":  {
-                                 "queryState":  {
-                                                    "Rows":  {
-                                                                 "projections":  [
-                                                                                     {
-                                                                                         "field":  {
-                                                                                                       "Column":  {
-                                                                                                                      "Expression":  {
-                                                                                                                                         "SourceRef":  {
-                                                                                                                                                           "Entity":  "Metrics"
-                                                                                                                                                       }
-                                                                                                                                     },
-                                                                                                                      "Property":  "MetricGroup"
-                                                                                                                  }
-                                                                                                   },
-                                                                                         "queryRef":  "Metrics.MetricGroup",
-                                                                                         "nativeQueryRef":  "Measure",
-                                                                                         "active":  true,
-                                                                                         "displayName":  "Measure"
-                                                                                     },
-                                                                                     {
-                                                                                         "field":  {
-                                                                                                       "Column":  {
-                                                                                                                      "Expression":  {
-                                                                                                                                         "SourceRef":  {
-                                                                                                                                                           "Entity":  "Metrics"
-                                                                                                                                                       }
-                                                                                                                                     },
-                                                                                                                      "Property":  "MetricName"
-                                                                                                                  }
-                                                                                                   },
-                                                                                         "queryRef":  "Metrics.MetricName",
-                                                                                         "nativeQueryRef":  "Metric",
-                                                                                         "active":  true,
-                                                                                         "displayName":  "Measure"
-                                                                                     }
-                                                                                 ],
-                                                                 "showAll":  true
-                                                             },
-                                                    "Values":  {
-                                                                   "projections":  [
-                                                                                       {
-                                                                                           "field":  {
-                                                                                                         "Measure":  {
-                                                                                                                         "Expression":  {
-                                                                                                                                            "SourceRef":  {
-                                                                                                                                                              "Entity":  "Actuals"
-                                                                                                                                                          }
-                                                                                                                                        },
-                                                                                                                         "Property":  "YTD Display"
-                                                                                                                     }
-                                                                                                     },
-                                                                                           "queryRef":  "Actuals.YTD Display",
-                                                                                           "nativeQueryRef":  "YTD",
-                                                                                           "displayName":  "YTD"
-                                                                                       },
-                                                                                       {
-                                                                                           "field":  {
-                                                                                                         "Measure":  {
-                                                                                                                         "Expression":  {
-                                                                                                                                            "SourceRef":  {
-                                                                                                                                                              "Entity":  "Actuals"
-                                                                                                                                                          }
-                                                                                                                                        },
-                                                                                                                         "Property":  "Goal Display"
-                                                                                                                     }
-                                                                                                     },
-                                                                                           "queryRef":  "Actuals.Goal Display",
-                                                                                           "nativeQueryRef":  "Goal",
-                                                                                           "displayName":  "Goal"
-                                                                                       },
-                                                                                       {
-                                                                                           "field":  {
-                                                                                                         "Measure":  {
-                                                                                                                         "Expression":  {
-                                                                                                                                            "SourceRef":  {
-                                                                                                                                                              "Entity":  "Actuals"
-                                                                                                                                                          }
-                                                                                                                                        },
-                                                                                                                         "Property":  "Period Week 1 Display"
-                                                                                                                     }
-                                                                                                     },
-                                                                                           "queryRef":  "Actuals.Period Week 1 Display",
-                                                                                           "nativeQueryRef":  "Week 1",
-                                                                                           "displayName":  "Week 1"
-                                                                                       },
-                                                                                       {
-                                                                                           "field":  {
-                                                                                                         "Measure":  {
-                                                                                                                         "Expression":  {
-                                                                                                                                            "SourceRef":  {
-                                                                                                                                                              "Entity":  "Actuals"
-                                                                                                                                                          }
-                                                                                                                                        },
-                                                                                                                         "Property":  "Period Week 2 Display"
-                                                                                                                     }
-                                                                                                     },
-                                                                                           "queryRef":  "Actuals.Period Week 2 Display",
-                                                                                           "nativeQueryRef":  "Week 2",
-                                                                                           "displayName":  "Week 2"
-                                                                                       },
-                                                                                       {
-                                                                                           "field":  {
-                                                                                                         "Measure":  {
-                                                                                                                         "Expression":  {
-                                                                                                                                            "SourceRef":  {
-                                                                                                                                                              "Entity":  "Actuals"
-                                                                                                                                                          }
-                                                                                                                                        },
-                                                                                                                         "Property":  "Period Week 3 Display"
-                                                                                                                     }
-                                                                                                     },
-                                                                                           "queryRef":  "Actuals.Period Week 3 Display",
-                                                                                           "nativeQueryRef":  "Week 3",
-                                                                                           "displayName":  "Week 3"
-                                                                                       },
-                                                                                       {
-                                                                                           "field":  {
-                                                                                                         "Measure":  {
-                                                                                                                         "Expression":  {
-                                                                                                                                            "SourceRef":  {
-                                                                                                                                                              "Entity":  "Actuals"
-                                                                                                                                                          }
-                                                                                                                                        },
-                                                                                                                         "Property":  "Period Week 4 Display"
-                                                                                                                     }
-                                                                                                     },
-                                                                                           "queryRef":  "Actuals.Period Week 4 Display",
-                                                                                           "nativeQueryRef":  "Week 4",
-                                                                                           "displayName":  "Week 4"
-                                                                                       }
-                                                                                   ]
-                                                               }
-                                                }
-                             },
-                   "expansionStates":  [
-                                           {
-                                               "roles":  [
-                                                             "Rows"
-                                                         ],
-                                               "levels":  [
-                                                              {
-                                                                  "queryRefs":  [
-                                                                                    "Metrics.MetricGroup"
-                                                                                ],
-                                                                  "identityKeys":  [
-                                                                                       {
-                                                                                           "Column":  {
-                                                                                                          "Expression":  {
-                                                                                                                             "SourceRef":  {
-                                                                                                                                               "Entity":  "Metrics"
-                                                                                                                                           }
-                                                                                                                         },
-                                                                                                          "Property":  "MetricGroup"
-                                                                                                      }
-                                                                                       }
-                                                                                   ],
-                                                                  "isPinned":  true
-                                                              },
-                                                              {
-                                                                  "queryRefs":  [
-                                                                                    "Metrics.MetricName"
-                                                                                ],
-                                                                  "isCollapsed":  true,
-                                                                  "isPinned":  true
-                                                              }
-                                                          ],
-                                               "root":  {
-
-                                                        }
-                                           }
-                                       ],
-                   "objects":  {
-                                   "columnHeaders":  [
-                                                         {
-                                                             "properties":  {
-                                                                                "fontFamily":  {
-                                                                                                   "expr":  {
-                                                                                                                "Literal":  {
-                                                                                                                                "Value":  "\u0027Segoe UI Semibold\u0027"
-                                                                                                                            }
-                                                                                                            }
-                                                                                               },
-                                                                                "fontSize":  {
-                                                                                                 "expr":  {
-                                                                                                              "Literal":  {
-                                                                                                                              "Value":  "16D"
-                                                                                                                          }
-                                                                                                          }
-                                                                                             },
-                                                                                "bold":  {
-                                                                                             "expr":  {
-                                                                                                          "Literal":  {
-                                                                                                                          "Value":  "true"
-                                                                                                                      }
-                                                                                                      }
-                                                                                         },
-                                                                                "fontColor":  {
-                                                                                                  "solid":  {
-                                                                                                                "color":  {
-                                                                                                                              "expr":  {
-                                                                                                                                           "Literal":  {
-                                                                                                                                                           "Value":  "\u0027#111111\u0027"
-                                                                                                                                                       }
-                                                                                                                                       }
-                                                                                                                          }
-                                                                                                            }
-                                                                                              },
-                                                                                "backColor":  {
-                                                                                                  "solid":  {
-                                                                                                                "color":  {
-                                                                                                                              "expr":  {
-                                                                                                                                           "Literal":  {
-                                                                                                                                                           "Value":  "\u0027#FFFFFF\u0027"
-                                                                                                                                                       }
-                                                                                                                                       }
-                                                                                                                          }
-                                                                                                            }
-                                                                                              },
-                                                                                "autoSizeColumnWidth":  {
-                                                                                                            "expr":  {
-                                                                                                                         "Literal":  {
-                                                                                                                                         "Value":  "false"
-                                                                                                                                     }
-                                                                                                                     }
-                                                                                                        },
-                                                                                "wordWrap":  {
-                                                                                                 "expr":  {
-                                                                                                              "Literal":  {
-                                                                                                                              "Value":  "false"
-                                                                                                                          }
-                                                                                                          }
-                                                                                             }
-                                                                            }
-                                                         }
-                                                     ],
-                                   "grid":  [
-                                                {
-                                                    "properties":  {
-                                                                       "gridVertical":  {
-                                                                                            "expr":  {
-                                                                                                         "Literal":  {
-                                                                                                                         "Value":  "false"
-                                                                                                                     }
-                                                                                                     }
-                                                                                        },
-                                                                       "gridHorizontal":  {
-                                                                                              "expr":  {
-                                                                                                           "Literal":  {
-                                                                                                                           "Value":  "true"
-                                                                                                                       }
-                                                                                                       }
-                                                                                          },
-                                                                       "gridHorizontalColor":  {
-                                                                                                   "solid":  {
-                                                                                                                 "color":  {
-                                                                                                                               "expr":  {
-                                                                                                                                            "Literal":  {
-                                                                                                                                                            "Value":  "\u0027#D9D9D9\u0027"
-                                                                                                                                                        }
-                                                                                                                                        }
-                                                                                                                           }
-                                                                                                             }
-                                                                                               },
-                                                                       "gridHorizontalWeight":  {
-                                                                                                    "expr":  {
-                                                                                                                 "Literal":  {
-                                                                                                                                 "Value":  "1D"
-                                                                                                                             }
-                                                                                                             }
-                                                                                                },
-                                                                       "rowPadding":  {
-                                                                                          "expr":  {
-                                                                                                       "Literal":  {
-                                                                                                                       "Value":  "5D"
-                                                                                                                   }
-                                                                                                   }
-                                                                                      }
-                                                                   }
-                                                }
-                                            ],
-                                   "subTotals":  [
-                                                     {
-                                                         "properties":  {
-                                                                            "rowSubtotals":  {
-                                                                                                 "expr":  {
-                                                                                                              "Literal":  {
-                                                                                                                              "Value":  "false"
-                                                                                                                          }
-                                                                                                          }
-                                                                                             },
-                                                                            "backColor":  {
-                                                                                              "solid":  {
-                                                                                                            "color":  {
-                                                                                                                          "expr":  {
-                                                                                                                                       "Literal":  {
-                                                                                                                                                       "Value":  "\u0027#E7E7E7\u0027"
-                                                                                                                                                   }
-                                                                                                                                   }
-                                                                                                                      }
-                                                                                                        }
-                                                                                          },
-                                                                            "bold":  {
-                                                                                         "expr":  {
-                                                                                                      "Literal":  {
-                                                                                                                      "Value":  "true"
-                                                                                                                  }
-                                                                                                  }
-                                                                                     },
-                                                                            "applyToHeaders":  {
-                                                                                                   "expr":  {
-                                                                                                                "Literal":  {
-                                                                                                                                "Value":  "true"
-                                                                                                                            }
-                                                                                                            }
-                                                                                               }
-                                                                        }
-                                                     }
-                                                 ],
-                                   "columnWidth":  [
-                                                       {
-                                                           "properties":  {
-                                                                              "value":  {
-                                                                                            "expr":  {
-                                                                                                         "Literal":  {
-                                                                                                                         "Value":  "400D"
-                                                                                                                     }
-                                                                                                     }
-                                                                                        }
-                                                                          },
-                                                           "selector":  {
-                                                                            "metadata":  "Metrics.MetricGroup"
-                                                                        }
-                                                       },
-                                                       {
-                                                           "properties":  {
-                                                                              "value":  {
-                                                                                            "expr":  {
-                                                                                                         "Literal":  {
-                                                                                                                         "Value":  "400D"
-                                                                                                                     }
-                                                                                                     }
-                                                                                        }
-                                                                          },
-                                                           "selector":  {
-                                                                            "metadata":  "Metrics.MetricName"
-                                                                        }
-                                                       },
-                                                       {
-                                                           "properties":  {
-                                                                              "value":  {
-                                                                                            "expr":  {
-                                                                                                         "Literal":  {
-                                                                                                                         "Value":  "190D"
-                                                                                                                     }
-                                                                                                     }
-                                                                                        }
-                                                                          },
-                                                           "selector":  {
-                                                                            "metadata":  "Actuals.YTD Display"
-                                                                        }
-                                                       },
-                                                       {
-                                                           "properties":  {
-                                                                              "value":  {
-                                                                                            "expr":  {
-                                                                                                         "Literal":  {
-                                                                                                                         "Value":  "190D"
-                                                                                                                     }
-                                                                                                     }
-                                                                                        }
-                                                                          },
-                                                           "selector":  {
-                                                                            "metadata":  "Actuals.Goal Display"
-                                                                        }
-                                                       },
-                                                       {
-                                                           "properties":  {
-                                                                              "value":  {
-                                                                                            "expr":  {
-                                                                                                         "Literal":  {
-                                                                                                                         "Value":  "190D"
-                                                                                                                     }
-                                                                                                     }
-                                                                                        }
-                                                                          },
-                                                           "selector":  {
-                                                                            "metadata":  "Actuals.Period Week 1 Display"
-                                                                        }
-                                                       },
-                                                       {
-                                                           "properties":  {
-                                                                              "value":  {
-                                                                                            "expr":  {
-                                                                                                         "Literal":  {
-                                                                                                                         "Value":  "190D"
-                                                                                                                     }
-                                                                                                     }
-                                                                                        }
-                                                                          },
-                                                           "selector":  {
-                                                                            "metadata":  "Actuals.Period Week 2 Display"
-                                                                        }
-                                                       },
-                                                       {
-                                                           "properties":  {
-                                                                              "value":  {
-                                                                                            "expr":  {
-                                                                                                         "Literal":  {
-                                                                                                                         "Value":  "190D"
-                                                                                                                     }
-                                                                                                     }
-                                                                                        }
-                                                                          },
-                                                           "selector":  {
-                                                                            "metadata":  "Actuals.Period Week 3 Display"
-                                                                        }
-                                                       },
-                                                       {
-                                                           "properties":  {
-                                                                              "value":  {
-                                                                                            "expr":  {
-                                                                                                         "Literal":  {
-                                                                                                                         "Value":  "190D"
-                                                                                                                     }
-                                                                                                     }
-                                                                                        }
-                                                                          },
-                                                           "selector":  {
-                                                                            "metadata":  "Actuals.Period Week 4 Display"
-                                                                        }
-                                                       }
-                                                   ],
-                                   "values":  [
-                                                  {
-                                                      "properties":  {
-                                                                         "fontFamily":  {
-                                                                                            "expr":  {
-                                                                                                         "Literal":  {
-                                                                                                                         "Value":  "\u0027Segoe UI\u0027"
-                                                                                                                     }
-                                                                                                     }
-                                                                                        },
-                                                                         "fontSize":  {
-                                                                                          "expr":  {
-                                                                                                       "Literal":  {
-                                                                                                                       "Value":  "16D"
-                                                                                                                   }
-                                                                                                   }
-                                                                                      },
-                                                                         "fontColorPrimary":  {
-                                                                                                  "solid":  {
-                                                                                                                "color":  {
-                                                                                                                              "expr":  {
-                                                                                                                                           "Literal":  {
-                                                                                                                                                           "Value":  "\u0027#111111\u0027"
-                                                                                                                                                       }
-                                                                                                                                       }
-                                                                                                                          }
-                                                                                                            }
-                                                                                              },
-                                                                         "backColorPrimary":  {
-                                                                                                  "solid":  {
-                                                                                                                "color":  {
-                                                                                                                              "expr":  {
-                                                                                                                                           "Literal":  {
-                                                                                                                                                           "Value":  "\u0027#FFFFFF\u0027"
-                                                                                                                                                       }
-                                                                                                                                       }
-                                                                                                                          }
-                                                                                                            }
-                                                                                              },
-                                                                         "fontColorSecondary":  {
-                                                                                                    "solid":  {
-                                                                                                                  "color":  {
-                                                                                                                                "expr":  {
-                                                                                                                                             "Literal":  {
-                                                                                                                                                             "Value":  "\u0027#111111\u0027"
-                                                                                                                                                         }
-                                                                                                                                         }
-                                                                                                                            }
-                                                                                                              }
-                                                                                                },
-                                                                         "backColorSecondary":  {
-                                                                                                    "solid":  {
-                                                                                                                  "color":  {
-                                                                                                                                "expr":  {
-                                                                                                                                             "Literal":  {
-                                                                                                                                                             "Value":  "\u0027#F7F7F7\u0027"
-                                                                                                                                                         }
-                                                                                                                                         }
-                                                                                                                            }
-                                                                                                              }
-                                                                                                },
-                                                                         "bandedRowHeaders":  {
-                                                                                                  "expr":  {
-                                                                                                               "Literal":  {
-                                                                                                                               "Value":  "true"
-                                                                                                                           }
-                                                                                                           }
-                                                                                              }
-                                                                     }
-                                                  },
-                                                  {
-                                                      "properties":  {
-                                                                         "backColor":  {
-                                                                                           "solid":  {
-                                                                                                         "color":  {
-                                                                                                                       "expr":  {
-                                                                                                                                    "Measure":  {
-                                                                                                                                                    "Expression":  {
-                                                                                                                                                                       "SourceRef":  {
-                                                                                                                                                                                         "Entity":  "Actuals"
-                                                                                                                                                                                     }
-                                                                                                                                                                   },
-                                                                                                                                                    "Property":  "Matrix Row Background"
-                                                                                                                                                }
-                                                                                                                                }
-                                                                                                                   }
-                                                                                                     }
-                                                                                       },
-                                                                         "fontColor":  {
-                                                                                           "solid":  {
-                                                                                                         "color":  {
-                                                                                                                       "expr":  {
-                                                                                                                                    "Measure":  {
-                                                                                                                                                    "Expression":  {
-                                                                                                                                                                       "SourceRef":  {
-                                                                                                                                                                                         "Entity":  "Actuals"
-                                                                                                                                                                                     }
-                                                                                                                                                                   },
-                                                                                                                                                    "Property":  "YTD Performance Color"
-                                                                                                                                                }
-                                                                                                                                }
-                                                                                                                   }
-                                                                                                     }
-                                                                                       }
-                                                                     },
-                                                      "selector":  {
-                                                                       "metadata":  "Actuals.YTD Display",
-                                                                       "data":  [
-                                                                                    {
-                                                                                        "dataViewWildcard":  {
-                                                                                                                 "matchingOption":  0
-                                                                                                             }
-                                                                                    }
-                                                                                ]
-                                                                   }
-                                                  },
-                                                  {
-                                                      "properties":  {
-                                                                         "backColor":  {
-                                                                                           "solid":  {
-                                                                                                         "color":  {
-                                                                                                                       "expr":  {
-                                                                                                                                    "Measure":  {
-                                                                                                                                                    "Expression":  {
-                                                                                                                                                                       "SourceRef":  {
-                                                                                                                                                                                         "Entity":  "Actuals"
-                                                                                                                                                                                     }
-                                                                                                                                                                   },
-                                                                                                                                                    "Property":  "Matrix Row Background"
-                                                                                                                                                }
-                                                                                                                                }
-                                                                                                                   }
-                                                                                                     }
-                                                                                       },
-                                                                         "fontColor":  {
-                                                                                           "solid":  {
-                                                                                                         "color":  {
-                                                                                                                       "expr":  {
-                                                                                                                                    "Literal":  {
-                                                                                                                                                    "Value":  "\u0027#333333\u0027"
-                                                                                                                                                }
-                                                                                                                                }
-                                                                                                                   }
-                                                                                                     }
-                                                                                       }
-                                                                     },
-                                                      "selector":  {
-                                                                       "metadata":  "Actuals.Goal Display",
-                                                                       "data":  [
-                                                                                    {
-                                                                                        "dataViewWildcard":  {
-                                                                                                                 "matchingOption":  0
-                                                                                                             }
-                                                                                    }
-                                                                                ]
-                                                                   }
-                                                  },
-                                                  {
-                                                      "properties":  {
-                                                                         "backColor":  {
-                                                                                           "solid":  {
-                                                                                                         "color":  {
-                                                                                                                       "expr":  {
-                                                                                                                                    "Measure":  {
-                                                                                                                                                    "Expression":  {
-                                                                                                                                                                       "SourceRef":  {
-                                                                                                                                                                                         "Entity":  "Actuals"
-                                                                                                                                                                                     }
-                                                                                                                                                                   },
-                                                                                                                                                    "Property":  "Matrix Row Background"
-                                                                                                                                                }
-                                                                                                                                }
-                                                                                                                   }
-                                                                                                     }
-                                                                                       },
-                                                                         "fontColor":  {
-                                                                                           "solid":  {
-                                                                                                         "color":  {
-                                                                                                                       "expr":  {
-                                                                                                                                    "Measure":  {
-                                                                                                                                                    "Expression":  {
-                                                                                                                                                                       "SourceRef":  {
-                                                                                                                                                                                         "Entity":  "Actuals"
-                                                                                                                                                                                     }
-                                                                                                                                                                   },
-                                                                                                                                                    "Property":  "Period Week 1 Color"
-                                                                                                                                                }
-                                                                                                                                }
-                                                                                                                   }
-                                                                                                     }
-                                                                                       }
-                                                                     },
-                                                      "selector":  {
-                                                                       "metadata":  "Actuals.Period Week 1 Display",
-                                                                       "data":  [
-                                                                                    {
-                                                                                        "dataViewWildcard":  {
-                                                                                                                 "matchingOption":  0
-                                                                                                             }
-                                                                                    }
-                                                                                ]
-                                                                   }
-                                                  },
-                                                  {
-                                                      "properties":  {
-                                                                         "backColor":  {
-                                                                                           "solid":  {
-                                                                                                         "color":  {
-                                                                                                                       "expr":  {
-                                                                                                                                    "Measure":  {
-                                                                                                                                                    "Expression":  {
-                                                                                                                                                                       "SourceRef":  {
-                                                                                                                                                                                         "Entity":  "Actuals"
-                                                                                                                                                                                     }
-                                                                                                                                                                   },
-                                                                                                                                                    "Property":  "Matrix Row Background"
-                                                                                                                                                }
-                                                                                                                                }
-                                                                                                                   }
-                                                                                                     }
-                                                                                       },
-                                                                         "fontColor":  {
-                                                                                           "solid":  {
-                                                                                                         "color":  {
-                                                                                                                       "expr":  {
-                                                                                                                                    "Measure":  {
-                                                                                                                                                    "Expression":  {
-                                                                                                                                                                       "SourceRef":  {
-                                                                                                                                                                                         "Entity":  "Actuals"
-                                                                                                                                                                                     }
-                                                                                                                                                                   },
-                                                                                                                                                    "Property":  "Period Week 2 Color"
-                                                                                                                                                }
-                                                                                                                                }
-                                                                                                                   }
-                                                                                                     }
-                                                                                       }
-                                                                     },
-                                                      "selector":  {
-                                                                       "metadata":  "Actuals.Period Week 2 Display",
-                                                                       "data":  [
-                                                                                    {
-                                                                                        "dataViewWildcard":  {
-                                                                                                                 "matchingOption":  0
-                                                                                                             }
-                                                                                    }
-                                                                                ]
-                                                                   }
-                                                  },
-                                                  {
-                                                      "properties":  {
-                                                                         "backColor":  {
-                                                                                           "solid":  {
-                                                                                                         "color":  {
-                                                                                                                       "expr":  {
-                                                                                                                                    "Measure":  {
-                                                                                                                                                    "Expression":  {
-                                                                                                                                                                       "SourceRef":  {
-                                                                                                                                                                                         "Entity":  "Actuals"
-                                                                                                                                                                                     }
-                                                                                                                                                                   },
-                                                                                                                                                    "Property":  "Matrix Row Background"
-                                                                                                                                                }
-                                                                                                                                }
-                                                                                                                   }
-                                                                                                     }
-                                                                                       },
-                                                                         "fontColor":  {
-                                                                                           "solid":  {
-                                                                                                         "color":  {
-                                                                                                                       "expr":  {
-                                                                                                                                    "Measure":  {
-                                                                                                                                                    "Expression":  {
-                                                                                                                                                                       "SourceRef":  {
-                                                                                                                                                                                         "Entity":  "Actuals"
-                                                                                                                                                                                     }
-                                                                                                                                                                   },
-                                                                                                                                                    "Property":  "Period Week 3 Color"
-                                                                                                                                                }
-                                                                                                                                }
-                                                                                                                   }
-                                                                                                     }
-                                                                                       }
-                                                                     },
-                                                      "selector":  {
-                                                                       "metadata":  "Actuals.Period Week 3 Display",
-                                                                       "data":  [
-                                                                                    {
-                                                                                        "dataViewWildcard":  {
-                                                                                                                 "matchingOption":  0
-                                                                                                             }
-                                                                                    }
-                                                                                ]
-                                                                   }
-                                                  },
-                                                  {
-                                                      "properties":  {
-                                                                         "backColor":  {
-                                                                                           "solid":  {
-                                                                                                         "color":  {
-                                                                                                                       "expr":  {
-                                                                                                                                    "Measure":  {
-                                                                                                                                                    "Expression":  {
-                                                                                                                                                                       "SourceRef":  {
-                                                                                                                                                                                         "Entity":  "Actuals"
-                                                                                                                                                                                     }
-                                                                                                                                                                   },
-                                                                                                                                                    "Property":  "Matrix Row Background"
-                                                                                                                                                }
-                                                                                                                                }
-                                                                                                                   }
-                                                                                                     }
-                                                                                       },
-                                                                         "fontColor":  {
-                                                                                           "solid":  {
-                                                                                                         "color":  {
-                                                                                                                       "expr":  {
-                                                                                                                                    "Measure":  {
-                                                                                                                                                    "Expression":  {
-                                                                                                                                                                       "SourceRef":  {
-                                                                                                                                                                                         "Entity":  "Actuals"
-                                                                                                                                                                                     }
-                                                                                                                                                                   },
-                                                                                                                                                    "Property":  "Period Week 4 Color"
-                                                                                                                                                }
-                                                                                                                                }
-                                                                                                                   }
-                                                                                                     }
-                                                                                       }
-                                                                     },
-                                                      "selector":  {
-                                                                       "metadata":  "Actuals.Period Week 4 Display",
-                                                                       "data":  [
-                                                                                    {
-                                                                                        "dataViewWildcard":  {
-                                                                                                                 "matchingOption":  0
-                                                                                                             }
-                                                                                    }
-                                                                                ]
-                                                                   }
-                                                  }
-                                              ],
-                                   "rowHeaders":  [
-                                                      {
-                                                          "properties":  {
-                                                                             "fontSize":  {
-                                                                                              "expr":  {
-                                                                                                           "Literal":  {
-                                                                                                                           "Value":  "16D"
-                                                                                                                       }
-                                                                                                       }
-                                                                                          },
-                                                                             "fontColor":  {
-                                                                                               "solid":  {
-                                                                                                             "color":  {
-                                                                                                                           "expr":  {
-                                                                                                                                        "Literal":  {
-                                                                                                                                                        "Value":  "\u0027#111111\u0027"
-                                                                                                                                                    }
-                                                                                                                                    }
-                                                                                                                       }
-                                                                                                         }
-                                                                                           },
-                                                                             "stepped":  {
-                                                                                             "expr":  {
-                                                                                                          "Literal":  {
-                                                                                                                          "Value":  "true"
-                                                                                                                      }
-                                                                                                      }
-                                                                                         },
-                                                                             "steppedLayoutIndentation":  {
-                                                                                                              "expr":  {
-                                                                                                                           "Literal":  {
-                                                                                                                                           "Value":  "20D"
-                                                                                                                                       }
-                                                                                                                       }
-                                                                                                          },
-                                                                             "showExpandCollapseButtons":  {
-                                                                                                               "expr":  {
-                                                                                                                            "Literal":  {
-                                                                                                                                            "Value":  "true"
-                                                                                                                                        }
-                                                                                                                        }
-                                                                                                           },
-                                                                             "expandCollapseButtonsColor":  {
-                                                                                                                "solid":  {
-                                                                                                                              "color":  {
-                                                                                                                                            "expr":  {
-                                                                                                                                                         "Literal":  {
-                                                                                                                                                                         "Value":  "\u0027#1267C4\u0027"
-                                                                                                                                                                     }
-                                                                                                                                                     }
-                                                                                                                                        }
-                                                                                                                          }
-                                                                                                            },
-                                                                             "fontFamily":  {
-                                                                                                "expr":  {
-                                                                                                             "Literal":  {
-                                                                                                                             "Value":  "\u0027Segoe UI\u0027"
-                                                                                                                         }
-                                                                                                         }
-                                                                                            },
-                                                                             "backColor":  {
-                                                                                               "solid":  {
-                                                                                                             "color":  {
-                                                                                                                           "expr":  {
-                                                                                                                                        "Measure":  {
-                                                                                                                                                        "Expression":  {
-                                                                                                                                                                           "SourceRef":  {
-                                                                                                                                                                                             "Entity":  "Actuals"
-                                                                                                                                                                                         }
-                                                                                                                                                                       },
-                                                                                                                                                        "Property":  "Matrix Row Background"
-                                                                                                                                                    }
-                                                                                                                                    }
-                                                                                                                       }
-                                                                                                         }
-                                                                                           },
-                                                                             "wordWrap":  {
-                                                                                              "expr":  {
-                                                                                                           "Literal":  {
-                                                                                                                           "Value":  "false"
-                                                                                                                       }
-                                                                                                       }
-                                                                                          },
-                                                                             "bold":  {
-                                                                                          "expr":  {
-                                                                                                       "Literal":  {
-                                                                                                                       "Value":  "false"
-                                                                                                                   }
-                                                                                                   }
-                                                                                      }
-                                                                         }
-                                                      },
-                                                      {
-                                                          "properties":  {
-                                                                             "bold":  {
-                                                                                          "expr":  {
-                                                                                                       "Literal":  {
-                                                                                                                       "Value":  "true"
-                                                                                                                   }
-                                                                                                   }
-                                                                                      },
-                                                                             "backColor":  {
-                                                                                               "solid":  {
-                                                                                                             "color":  {
-                                                                                                                           "expr":  {
-                                                                                                                                        "Literal":  {
-                                                                                                                                                        "Value":  "\u0027#E7E7E7\u0027"
-                                                                                                                                                    }
-                                                                                                                                    }
-                                                                                                                       }
-                                                                                                         }
-                                                                                           },
-                                                                             "fontFamily":  {
-                                                                                                "expr":  {
-                                                                                                             "Literal":  {
-                                                                                                                             "Value":  "\u0027Segoe UI Semibold\u0027"
-                                                                                                                         }
-                                                                                                         }
-                                                                                            }
-                                                                         },
-                                                          "selector":  {
-                                                                           "metadata":  "Metrics.MetricGroup"
-                                                                       }
-                                                      }
-                                                  ]
-                               },
-                   "visualContainerObjects":  {
-                                                  "background":  [
-                                                                     {
-                                                                         "properties":  {
-                                                                                            "show":  {
-                                                                                                         "expr":  {
-                                                                                                                      "Literal":  {
-                                                                                                                                      "Value":  "true"
-                                                                                                                                  }
-                                                                                                                  }
-                                                                                                     },
-                                                                                            "color":  {
-                                                                                                          "solid":  {
-                                                                                                                        "color":  {
-                                                                                                                                      "expr":  {
-                                                                                                                                                   "Literal":  {
-                                                                                                                                                                   "Value":  "\u0027#FFFFFF\u0027"
-                                                                                                                                                               }
-                                                                                                                                               }
-                                                                                                                                  }
-                                                                                                                    }
-                                                                                                      },
-                                                                                            "transparency":  {
-                                                                                                                 "expr":  {
-                                                                                                                              "Literal":  {
-                                                                                                                                              "Value":  "0D"
-                                                                                                                                          }
-                                                                                                                          }
-                                                                                                             }
-                                                                                        }
-                                                                     }
-                                                                 ],
-                                                  "visualHeader":  [
-                                                                       {
-                                                                           "properties":  {
-                                                                                              "show":  {
-                                                                                                           "expr":  {
-                                                                                                                        "Literal":  {
-                                                                                                                                        "Value":  "false"
-                                                                                                                                    }
-                                                                                                                    }
-                                                                                                       }
-                                                                                          }
-                                                                       }
-                                                                   ],
-                                                  "title":  [
-                                                                {
-                                                                    "properties":  {
-                                                                                       "show":  {
-                                                                                                    "expr":  {
-                                                                                                                 "Literal":  {
-                                                                                                                                 "Value":  "false"
-                                                                                                                             }
-                                                                                                             }
-                                                                                                }
-                                                                                   }
-                                                                }
-                                                            ],
-                                                  "border":  [
-                                                                 {
-                                                                     "properties":  {
-                                                                                        "show":  {
-                                                                                                     "expr":  {
-                                                                                                                  "Literal":  {
-                                                                                                                                  "Value":  "false"
-                                                                                                                              }
-                                                                                                              }
-                                                                                                 }
-                                                                                    }
-                                                                 }
-                                                             ],
-                                                  "dropShadow":  [
-                                                                     {
-                                                                         "properties":  {
-                                                                                            "show":  {
-                                                                                                         "expr":  {
-                                                                                                                      "Literal":  {
-                                                                                                                                      "Value":  "false"
-                                                                                                                                  }
-                                                                                                                  }
-                                                                                                     }
-                                                                                        }
-                                                                     }
-                                                                 ],
-                                                  "padding":  [
-                                                                  {
-                                                                      "properties":  {
-                                                                                         "left":  {
-                                                                                                      "expr":  {
-                                                                                                                   "Literal":  {
-                                                                                                                                   "Value":  "0D"
-                                                                                                                               }
-                                                                                                               }
-                                                                                                  },
-                                                                                         "right":  {
-                                                                                                       "expr":  {
-                                                                                                                    "Literal":  {
-                                                                                                                                    "Value":  "0D"
-                                                                                                                                }
-                                                                                                                }
-                                                                                                   },
-                                                                                         "bottom":  {
-                                                                                                        "expr":  {
-                                                                                                                     "Literal":  {
-                                                                                                                                     "Value":  "0D"
-                                                                                                                                 }
-                                                                                                                 }
-                                                                                                    },
-                                                                                         "top":  {
-                                                                                                     "expr":  {
-                                                                                                                  "Literal":  {
-                                                                                                                                  "Value":  "0D"
-                                                                                                                              }
-                                                                                                              }
-                                                                                                 }
-                                                                                     }
-                                                                  }
-                                                              ]
-                                              }
-               }
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "scorecard_matrix",
+  "position": {
+    "x": 275,
+    "y": 310,
+    "z": 14000,
+    "height": 520,
+    "width": 1605,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Metrics"
+                    }
+                  },
+                  "Property": "MetricGroup"
+                }
+              },
+              "queryRef": "Metrics.MetricGroup",
+              "nativeQueryRef": "Measure",
+              "active": true,
+              "displayName": "Measure"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Metrics"
+                    }
+                  },
+                  "Property": "MetricName"
+                }
+              },
+              "queryRef": "Metrics.MetricName",
+              "nativeQueryRef": "Metric",
+              "active": true,
+              "displayName": "Measure"
+            }
+          ],
+          "showAll": true
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Actuals"
+                    }
+                  },
+                  "Property": "YTD Display"
+                }
+              },
+              "queryRef": "Actuals.YTD Display",
+              "nativeQueryRef": "YTD",
+              "displayName": "YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Actuals"
+                    }
+                  },
+                  "Property": "Goal Display"
+                }
+              },
+              "queryRef": "Actuals.Goal Display",
+              "nativeQueryRef": "Goal",
+              "displayName": "Goal"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Actuals"
+                    }
+                  },
+                  "Property": "Period Week 1 Display"
+                }
+              },
+              "queryRef": "Actuals.Period Week 1 Display",
+              "nativeQueryRef": "Week 1",
+              "displayName": "Week 1"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Actuals"
+                    }
+                  },
+                  "Property": "Period Week 2 Display"
+                }
+              },
+              "queryRef": "Actuals.Period Week 2 Display",
+              "nativeQueryRef": "Week 2",
+              "displayName": "Week 2"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Actuals"
+                    }
+                  },
+                  "Property": "Period Week 3 Display"
+                }
+              },
+              "queryRef": "Actuals.Period Week 3 Display",
+              "nativeQueryRef": "Week 3",
+              "displayName": "Week 3"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Actuals"
+                    }
+                  },
+                  "Property": "Period Week 4 Display"
+                }
+              },
+              "queryRef": "Actuals.Period Week 4 Display",
+              "nativeQueryRef": "Week 4",
+              "displayName": "Week 4"
+            }
+          ]
+        }
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Metrics.MetricGroup"
+            ],
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Metrics"
+                    }
+                  },
+                  "Property": "MetricGroup"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Metrics.MetricName"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#111111'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "gridHorizontal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D9D9D9'"
+                    }
+                  }
+                }
+              }
+            },
+            "gridHorizontalWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E7E7E7'"
+                    }
+                  }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "applyToHeaders": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "400D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Metrics.MetricGroup"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "400D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Metrics.MetricName"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "190D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Actuals.YTD Display"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "190D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Actuals.Goal Display"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "190D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Actuals.Period Week 1 Display"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "190D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Actuals.Period Week 2 Display"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "190D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Actuals.Period Week 3 Display"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "190D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Actuals.Period Week 4 Display"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            },
+            "fontColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#111111'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#111111'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F7F7F7'"
+                    }
+                  }
+                }
+              }
+            },
+            "bandedRowHeaders": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Actuals"
+                        }
+                      },
+                      "Property": "Matrix Row Background"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Actuals"
+                        }
+                      },
+                      "Property": "YTD Performance Color"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Actuals.YTD Display"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Actuals"
+                        }
+                      },
+                      "Property": "Matrix Row Background"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#333333'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Actuals.Goal Display"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Actuals"
+                        }
+                      },
+                      "Property": "Matrix Row Background"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Actuals"
+                        }
+                      },
+                      "Property": "Period Week 1 Color"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Actuals.Period Week 1 Display"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Actuals"
+                        }
+                      },
+                      "Property": "Matrix Row Background"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Actuals"
+                        }
+                      },
+                      "Property": "Period Week 2 Color"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Actuals.Period Week 2 Display"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Actuals"
+                        }
+                      },
+                      "Property": "Matrix Row Background"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Actuals"
+                        }
+                      },
+                      "Property": "Period Week 3 Color"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Actuals.Period Week 3 Display"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Actuals"
+                        }
+                      },
+                      "Property": "Matrix Row Background"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Actuals"
+                        }
+                      },
+                      "Property": "Period Week 4 Color"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Actuals.Period Week 4 Display"
+          }
+        }
+      ],
+      "rowHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#111111'"
+                    }
+                  }
+                }
+              }
+            },
+            "stepped": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "steppedLayoutIndentation": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            },
+            "showExpandCollapseButtons": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "expandCollapseButtonsColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1267C4'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI'"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Actuals"
+                        }
+                      },
+                      "Property": "Matrix Row Background"
+                    }
+                  }
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E7E7E7'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Metrics.MetricGroup"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9764338d9185b55aae93",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Metrics"
+              }
+            },
+            "Property": "MetricGroup"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d8e883feaac6210c7c59",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Metrics"
+              }
+            },
+            "Property": "MetricName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e4ca2d4a1e5606736602",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Actuals"
+              }
+            },
+            "Property": "YTD Display"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f5b784475ec42e0c93d4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Actuals"
+              }
+            },
+            "Property": "Goal Display"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "044d1c1d0740968b2314",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Actuals"
+              }
+            },
+            "Property": "Period Week 1 Display"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9a086b2950bb41d378ec",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Actuals"
+              }
+            },
+            "Property": "Period Week 2 Display"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "23b5be429475179ec7aa",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Actuals"
+              }
+            },
+            "Property": "Period Week 3 Display"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "78469cb2db0a1ba7bb8e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Actuals"
+              }
+            },
+            "Property": "Period Week 4 Display"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
 }
